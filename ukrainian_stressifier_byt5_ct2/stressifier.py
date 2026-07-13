@@ -207,7 +207,7 @@ class UkrainianStressifier:
 
             
             source_tokens = self.tokenizer.tokenize(core)
-            start = time.time()
+            #start = time.time()
             results = self.translator.translate_batch(
                 [source_tokens],
                 max_decoding_length=self.max_length,
@@ -215,7 +215,7 @@ class UkrainianStressifier:
                 repetition_penalty=self.repetition_penalty
             )
             end = time.time()
-            print(f"Translate time: {end - start}")
+            #print(f"Translate time: {end - start}")
             output_tokens = results[0].hypotheses[0]
             stressed = self.tokenizer.convert_tokens_to_string(output_tokens)            
             stressed = shift_stress_marks_right(stressed)
